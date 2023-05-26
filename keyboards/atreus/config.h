@@ -36,3 +36,6 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+#define TAPPING_TERM 250
+#define PERMISSIVE_HOLD true
+#define IGNORE_MOD_TAP_INTERRUPT true
