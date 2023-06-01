@@ -38,4 +38,4 @@
 //#define NO_ACTION_ONESHOT
 #define TAPPING_TERM 250
 #define PERMISSIVE_HOLD true
-#define IGNORE_MOD_TAP_INTERRUPT true
+//#define IGNORE_MOD_TAP_INTERRUPT true
