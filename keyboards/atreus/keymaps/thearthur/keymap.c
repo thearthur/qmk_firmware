@@ -2,9 +2,9 @@
 // This is the canonical layout file for the Quantum project. If you want to add another keyboard,
 
 #include QMK_KEYBOARD_H
-// #include "keymap_us_international.h"
-// #include "sendstring_us_international.h"
-// #include "keymap_turkish_f.h"
+#include "keymap_us_international.h"
+#include "sendstring_us_international.h"
+#include "keymap_turkish_f.h"
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
@@ -12,6 +12,42 @@
 #define _QW 0
 #define _RS 1
 #define _LW 2
+
+enum custom_keycodes {
+    PNR = SAFE_RANGE,
+    FROG = SAFE_RANGE+1,
+    HEART = SAFE_RANGE+2
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case PNR:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            send_unicode_string("Pınar");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case FROG:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            send_unicode_string("🐸");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case HEART:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            send_unicode_string("❤️");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    }
+    return true;
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
@@ -40,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_LW] = LAYOUT( /* [> LOWER <] */
     KC_INS,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,                   KC_UP,   KC_F7,   KC_F8,   KC_F9,   KC_F10  ,
-    KC_DEL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                   KC_DOWN, KC_F4,   KC_F5,   KC_F6,   KC_F11  ,
-    KC_NO,   KC_VOLU, KC_NO,   KC_NO,   QK_BOOT,                   KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F12  ,
+    KC_DEL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                   HEART,   KC_F4,   KC_F5,   KC_F6,   KC_F11  ,
+    PNR,     KC_VOLU, KC_VOLU, UC_NEXT, QK_BOOT,                   FROG,    KC_F1,   KC_F2,   KC_F3,   KC_F12  ,
     KC_NO,   KC_VOLD, KC_LGUI, KC_LSFT, KC_BSPC, KC_LCTL, KC_LALT, KC_SPC,  TO(_QW), KC_PSCR, KC_SCROLL_LOCK, KC_PAUS )
 };
