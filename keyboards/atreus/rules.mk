@@ -13,3 +13,4 @@ UNICODE_ENABLE = yes        # Unicode
 AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = yes
 DEFAULT_FOLDER = atreus/astar
+TAP_DANCE_ENABLE = yes
